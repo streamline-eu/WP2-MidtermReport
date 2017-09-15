@@ -1,0 +1,598 @@
+Message-ID: <1746587537.19.1489530349096.JavaMail.confluence@atlassian.ilab.sztaki.hu>
+Subject: Exported From Confluence
+MIME-Version: 1.0
+Content-Type: multipart/related; 
+	boundary="----=_Part_18_1226824738.1489530349090"
+
+------=_Part_18_1226824738.1489530349090
+Content-Type: text/html; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+Content-Location: file:///C:/exported.html
+
+<html xmlns:o=3D'urn:schemas-microsoft-com:office:office'
+      xmlns:w=3D'urn:schemas-microsoft-com:office:word'
+      xmlns:v=3D'urn:schemas-microsoft-com:vml'
+      xmlns=3D'urn:w3-org-ns:HTML'>
+<head>
+    <meta http-equiv=3D"Content-Type" content=3D"text/html; charset=3Dutf-8=
+">
+    <title>Parameter Server design 2</title>
+    <!--[if gte mso 9]>
+    <xml>
+        <o:OfficeDocumentSettings>
+            <o:TargetScreenSize>1024x640</o:TargetScreenSize>
+            <o:PixelsPerInch>72</o:PixelsPerInch>
+            <o:AllowPNG/>
+        </o:OfficeDocumentSettings>
+        <w:WordDocument>
+            <w:View>Print</w:View>
+            <w:Zoom>90</w:Zoom>
+            <w:DoNotOptimizeForBrowser/>
+        </w:WordDocument>
+    </xml>
+    <![endif]-->
+    <style>
+                <!--
+        @page Section1 {
+            size: 8.5in 11.0in;
+            margin: 1.0in;
+            mso-header-margin: .5in;
+            mso-footer-margin: .5in;
+            mso-paper-source: 0;
+        }
+
+        td {
+            page-break-inside: avoid;
+        }
+
+        tr {
+            page-break-after: avoid;
+        }
+
+        div.Section1 {
+            page: Section1;
+        }
+
+        /* Confluence print stylesheet. Common to all themes for print medi=
+a */
+/* Full of !important until we improve batching for print CSS */
+
+@media print {
+    #main {
+        padding-bottom: 1em !important; /* The default padding of 6em is to=
+o much for printouts */
+    }
+
+    body {
+        font-family: Arial, Helvetica, FreeSans, sans-serif;
+        font-size: 10pt;
+        line-height: 1.2;
+    }
+
+    body, #full-height-container, #main, #page, #content, .has-personal-sid=
+ebar #content {
+        background: #fff !important;
+        color: #000 !important;
+        border: 0 !important;
+        width: 100% !important;
+        height: auto !important;
+        min-height: auto !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        display: block !important;
+    }
+
+    a, a:link, a:visited, a:focus, a:hover, a:active {
+        color: #000;
+    }
+
+    #content h1,
+    #content h2,
+    #content h3,
+    #content h4,
+    #content h5,
+    #content h6 {
+        font-family: Arial, Helvetica, FreeSans, sans-serif;
+        page-break-after: avoid;
+    }
+
+    pre {
+        font-family: Monaco, "Courier New", monospace;
+    }
+
+    #header,
+    .aui-header-inner,
+    #navigation,
+    #sidebar,
+    .sidebar,
+    #personal-info-sidebar,
+    .ia-fixed-sidebar,
+    .page-actions,
+    .navmenu,
+    .ajs-menu-bar,
+    .noprint,
+    .inline-control-link,
+    .inline-control-link a,
+    a.show-labels-editor,
+    .global-comment-actions,
+    .comment-actions,
+    .quick-comment-container,
+    #addcomment {
+        display: none !important;
+    }
+
+    /* CONF-28544 cannot print multiple pages in IE */
+    #splitter-content {
+        position: relative !important;
+    }
+
+    .comment .date::before {
+        content: none !important; /* remove middot for print view */
+    }
+
+    h1.pagetitle img {
+        height: auto;
+        width: auto;
+    }
+
+    .print-only {
+        display: block;
+    }
+
+    #footer {
+        position: relative !important; /* CONF-17506 Place the footer at en=
+d of the content */
+        margin: 0;
+        padding: 0;
+        background: none;
+        clear: both;
+    }
+
+    #poweredby {
+        border-top: none;
+        background: none;
+    }
+
+    #poweredby li.print-only {
+        display: list-item;
+        font-style: italic;
+    }
+
+    #poweredby li.noprint {
+        display: none;
+    }
+
+    /* no width controls in print */
+    .wiki-content .table-wrap,
+    .wiki-content p,
+    .panel .codeContent,
+    .panel .codeContent pre,
+    .image-wrap {
+        overflow: visible !important;
+    }
+
+    /* TODO - should this work? */
+    #children-section,
+    #comments-section .comment,
+    #comments-section .comment .comment-body,
+    #comments-section .comment .comment-content,
+    #comments-section .comment p {
+        page-break-inside: avoid;
+    }
+
+    #page-children a {
+        text-decoration: none;
+    }
+
+    /**
+     hide twixies
+
+     the specificity here is a hack because print styles
+     are getting loaded before the base styles. */
+    #comments-section.pageSection .section-header,
+    #comments-section.pageSection .section-title,
+    #children-section.pageSection .section-header,
+    #children-section.pageSection .section-title,
+    .children-show-hide {
+        padding-left: 0;
+        margin-left: 0;
+    }
+
+    .children-show-hide.icon {
+        display: none;
+    }
+
+    /* personal sidebar */
+    .has-personal-sidebar #content {
+        margin-right: 0px;
+    }
+
+    .has-personal-sidebar #content .pageSection {
+        margin-right: 0px;
+    }
+}
+-->
+    </style>
+</head>
+<body>
+    <h1>Parameter Server design 2</h1>
+    <div class=3D"Section1">
+        <p>Parameter Server (PS) is an architecture for model-parallel trai=
+ning. A PS consisting of multiple nodes store the parameters (e.g. elements=
+ of a large vector, or rows of a large matrix). Multiple workers store the =
+data, <em>pull</em> these parameters, update them based on the parameters (=
+e.g. SGD), and <em>push</em> the changes.</p>
+<p>PS is like a specialized key-value store for ML. The main difference is =
+that a PS can do many ML specific optimizations (see work of Li et al.). Ke=
+y-value stores are<br><br>See the state of the art paper:<br>Li et al.: Sca=
+lable Distributed Machine Learning with Parameter Server<br><a class=3D"ext=
+ernal-link" href=3D"https://www.cs.cmu.edu/%7Emuli/file/parameter_server_os=
+di14.pdf" rel=3D"nofollow">https://www.cs.cmu.edu/~muli/file/parameter_serv=
+er_osdi14.pdf</a></p>
+<h1 id=3D"ParameterServerdesign2-Motivation">Motivation</h1>
+<p>Easier implementation of training algorithms where the model does not fi=
+t one machine. Model-parallelism is abstracted away. Online and incremental=
+ algorithms could also be implemented.</p>
+<ul>
+<li>Asynchronous matrix factorization with SGD
+<ul>
+<li><a class=3D"external-link" href=3D"https://stanford.edu/%7Erezab/papers=
+/factorbird.pdf" rel=3D"nofollow">https://stanford.edu/~rezab/papers/factor=
+bird.pdf</a></li>
+</ul></li>
+<li>Latent Dirichlet Allocation</li>
+<li>Sparse Logistic Regression</li>
+<li>Stale Synchronous Parallel training (needs some kind of time/progress t=
+racking)
+<ul>
+<li><a href=3D"http://papers.nips.cc/paper/4894-more-effective-distributed-=
+ml-via-a-stale-synchronous-parallel-parameter-server.pdf" class=3D"external=
+-link" rel=3D"nofollow">http://papers.nips.cc/paper/4894-more-effective-dis=
+tributed-ml-via-a-stale-synchronous-parallel-parameter-server.pdf</a></li>
+</ul></li>
+</ul>
+<h1 id=3D"ParameterServerdesign2-PossiblesolutionsinFlink">Possible solutio=
+ns in Flink</h1>
+<p>There are two main <strong>purposes</strong>:</p>
+<ol>
+<li>Use PS inside a Flink job.</li>
+<li>Implement a PS using Flink.</li>
+</ol>
+<p>There are multiple <strong>solutions</strong> for achieving one of them =
+or both:</p>
+<h3 id=3D"ParameterServerdesign2-1.Usinganexternalservice">1.&nbsp;Using an=
+ external service</h3>
+<p>E.g. a key-value store.</p>
+<p><strong>pros</strong></p>
+<ul>
+<li>Easy to implement</li>
+</ul>
+<p><strong>cons</strong></p>
+<ul>
+<li>Does not perform well (see Li et al. and Factorbird)</li>
+<li>Possible inconsistency with Flink, needs to solve fault tolerance
+<ul>
+<li>At failures, Flink messages get replayed, so updates to the Parameter S=
+erver would happen twice</li>
+</ul></li>
+</ul>
+<h3 id=3D"ParameterServerdesign2-2.UsingFlinkStreamingAPI">2. Using Flink S=
+treaming API</h3>
+<p>Needs 2-way communication between workers and PS. Worker receive model w=
+ith pull, send model with push, thus only possible with iterative dataflow =
+(i.e. loops, backward edges in the dataflow graph).</p>
+<p><strong>pros</strong></p>
+<ul>
+<li>Could use a higher level Flink API
+<ul>
+<li>Easier implementation</li>
+<li>Easier integration with streaming jobs</li>
+</ul></li>
+<li>Fault tolerance guarantee for free (when loop fault tolerance PR is mer=
+ged)</li>
+</ul>
+<p><strong>cons</strong></p>
+<ul>
+<li>Forcing another paradigm into a stateful dataflow (iterative dataflow)<=
+/li>
+<li>Iterative dataflow is not mature enough in Flink&nbsp; (<span style=3D"=
+color: rgb(255,0,0);">TODO links)</span>
+<ul>
+<li>No fault tolerance guarantee in iterations (there is a pending PR)</li>
+<li>Possible deadlock because of looped backpressure</li>
+</ul></li>
+<li>Cannot control lower-level details
+<ul>
+<li>E.g. output buffers of operators</li>
+<li>These must be imitated at higher level</li>
+</ul></li>
+</ul>
+<h3 id=3D"ParameterServerdesign2-3.UsingFlinkRuntime">3. Using Flink Runtim=
+e</h3>
+<p>Possible by using a so called <em>JobGraph</em> with backward edges.<br>=
+This could also be integrated in the Flink Streaming API, if community agre=
+es. Integration would require deep wiring in Flink Streaming API and some k=
+ind of fault tolerance mechanism, so a lot of development and reviewing eff=
+orts.</p>
+<p><strong>pros</strong></p>
+<ul>
+<li>Implementation is not going against the API</li>
+<li>Could fine-tune lower-level details (network communication, serializati=
+on etc.)</li>
+</ul>
+<p><strong>cons</strong></p>
+<ul>
+<li>Has to implement own fault tolerance mechanism</li>
+<li>Would need to understand lower-level primitives</li>
+<li>Still does not fit perfectly with the paradigm<br>
+<ul>
+<li>Flink Runtime is designed for dataflow batch and streaming APIs</li>
+</ul></li>
+</ul>
+<h2 id=3D"ParameterServerdesign2-Chosensolution">Chosen solution</h2>
+<p>Based on evaluating these 3 different approaches, we decided to use the =
+Flink Streaming API. This allows an implementation on Flink, usable with Fl=
+ink streaming.</p>
+<h1 id=3D"ParameterServerdesign2-API">API</h1>
+<p>Users can implement a logic for the worker, and connect the training to =
+a Flink Streaming job. The worker logic handles incoming data and incoming =
+answers to pulls, and it is able to pull and push parameters. So the user i=
+mplements this:</p>
+<div class=3D"code panel pdl" style=3D"border-width: 1px;">
+<div class=3D"codeContent panelContent pdl">=20
+<pre class=3D"syntaxhighlighter-pre" data-syntaxhighlighter-params=3D"brush=
+: scala; gutter: false; theme: Confluence" data-theme=3D"Confluence">trait =
+WorkerLogic[T, P] extends Serializable {
+  def onRecv(data: T, ps: ParameterServerClient[P]): Unit
+  def onPullRecv(paramId: Int, paramValue: P, ps: ParameterServerClient[P])=
+: Unit
+}
+</pre>=20
+</div>
+</div>
+<p>Parameters are identified by integers. The type of the incoming data is =
+T, and the PS stores parameters of type P. (For now, this could be an arbit=
+rary serializable type, as there is no optimization for numeric vectors.) T=
+he user can use a PS client in the worker logic:</p>
+<div class=3D"code panel pdl" style=3D"border-width: 1px;">
+<div class=3D"codeContent panelContent pdl">=20
+<pre class=3D"syntaxhighlighter-pre" data-syntaxhighlighter-params=3D"brush=
+: scala; gutter: false; theme: Confluence" data-theme=3D"Confluence">trait =
+ParameterServerClient[P] extends Serializable {
+  def pull(id: Int): Unit
+ &nbsp;def push(id: Int, deltaUpdate: P): Unit
+}
+</pre>=20
+</div>
+</div>
+<p>For now, the prototypes allows more configuration. The messaging logic c=
+ould be implemented by the user, allowing arbitrary buffering of messages. =
+The PS logic (i.e. how to store parameters and handle pulls/pushes) could a=
+lso be implemented by the user.</p>
+<h1 id=3D"ParameterServerdesign2-Basicarchitecture">Basic architecture</h1>
+<p>We use iterative streams to achieve 2-way communication. The logical str=
+eam:</p>
+<p><span class=3D"confluence-embedded-file-wrapper"><img class=3D"confluenc=
+e-embedded-image" src=3D"0f6648473037608b25c44046a9ecec70" data-image-src=
+=3D"/confluence/download/attachments/7340690/ps.png?version=3D1&amp;modific=
+ationDate=3D1489075619343&amp;api=3Dv2" data-unresolved-comment-count=3D"0"=
+ data-linked-resource-id=3D"7340700" data-linked-resource-version=3D"1" dat=
+a-linked-resource-type=3D"attachment" data-linked-resource-default-alias=3D=
+"ps.png" data-base-url=3D"https://info.ilab.sztaki.hu/confluence" data-link=
+ed-resource-content-type=3D"image/png" data-linked-resource-container-id=3D=
+"7340690" data-linked-resource-container-version=3D"5" width=3D"468" height=
+=3D"168"></span></p>
+<p>Both the input data and the model output is a DataStream. The function t=
+hat connects the PS with the streaming API (simplifed):</p>
+<div class=3D"code panel pdl" style=3D"border-width: 1px;">
+<div class=3D"codeContent panelContent pdl">=20
+<pre class=3D"syntaxhighlighter-pre" data-syntaxhighlighter-params=3D"brush=
+: scala; gutter: false; theme: Confluence" data-theme=3D"Confluence">def ps=
+Transform[T, P, PSOut](xs: DataStream[T], workerLogic: WorkerLogic[T, P]): =
+DataStream[PSOut]
+</pre>=20
+</div>
+</div>
+<p>So given a stream of data, the function produces a stream of model updat=
+es. The model updates can be written to a storage.</p>
+<h1 id=3D"ParameterServerdesign2-Evaluation">Evaluation</h1>
+<p>We first measure how feasible is to use an architecture like this for of=
+fline recommendation with MF. We train the model fully asynchronously (i.e.=
+ do not lock parameters, see Schelter et al.: Factorbird) with SGD optimize=
+r.</p>
+<p>We compare the performance and model accuracy against the offline DSGD f=
+or MF Flink implementation (based on work of Gemulla et. al).</p>
+<h1 id=3D"ParameterServerdesign2-Othernotes">Other notes</h1>
+<p>There are other approaches for model-parallel training:</p>
+<ul>
+<li><a href=3D"http://hunch.net/?p=3D151364" class=3D"external-link" rel=3D=
+"nofollow">http://hunch.net/?p=3D151364</a></li>
+<li>TensorFlow is also capable of model parallel training (<a href=3D"http:=
+//download.tensorflow.org/paper/whitepaper2015.pdf" class=3D"external-link"=
+ rel=3D"nofollow">http://download.tensorflow.org/paper/whitepaper2015.pdf</=
+a>)</li>
+</ul>
+<p><br><a class=3D"external-link" href=3D"https://www.cs.cmu.edu/%7Emuli/fi=
+le/parameter_server_osdi14.pdf" rel=3D"nofollow"></a></p>
+    </div>
+</body>
+</html>
+------=_Part_18_1226824738.1489530349090
+Content-Type: application/octet-stream
+Content-Transfer-Encoding: base64
+Content-Location: file:///C:/0f6648473037608b25c44046a9ecec70
+
+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
+RU5ErkJggg==
+------=_Part_18_1226824738.1489530349090--
